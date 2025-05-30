@@ -25,8 +25,7 @@ docker run --network=host --ipc=host ur5e_noetic roslaunch ur_robot_driver ur5e_
 Se você ainda não calibrou seu robô, execute a ferramenta de correção de calibração:
 
 ```bash
-docker run --network=host --ipc=host ur5e_noetic
-  roslaunch ur_calibration calibration_correction.launch robot_ip:=<robot_ip> target_filename:="${HOME}/my_robot_calibration.yaml"
+docker run --network=host --ipc=host ur5e_noetic roslaunch ur_calibration calibration_correction.launch robot_ip:=<robot_ip> target_filename:="${HOME}/my_robot_calibration.yaml"
 ```
 
 Substitua `<robot_ip>` pelo endereço IP do seu robô UR físico.
@@ -43,3 +42,12 @@ docker run --network=host --ipc=host ur5e_noetic
 
 Substitua o caminho do arquivo de calibração se estiver usando um nome ou local personalizados.
 
+
+## ✅ Rodando o driver da realsense
+
+Conecte a câmera na USB antes de rodar o seguinte comando!!
+
+```bash
+docker run --network=host --ipc=host --privileged ur5e_noetic roslaunch realsense2_camera rs_camera.launch
+```
+Após isso, se alguma câmera realsense for detectada os tópicos referentes a ela vão começar a ser publicados.
